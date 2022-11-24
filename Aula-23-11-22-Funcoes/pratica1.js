@@ -1,0 +1,1 @@
+console.log("Quando o sol bater \nNa janela do teu quarto \nLembra e vê Que o caminho é um só")
