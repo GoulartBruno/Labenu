@@ -1,34 +1,42 @@
-const marca1= "BMW"
-const modelo1= "X6"
-const ano1= 2021
+const brand1= "BMW"
+const model1= "X6"
+const year1= 2021
 const km1= 10214
 const zeroKM1= km1==0
+//variables car01
 
-
-const marca2= "Mercedes"
-const modelo2= "EQS"
-const ano2= 2018
+const brand2= "Mercedes"
+const model2= "EQS"
+const year2= 2018
 const km2= 87421
 const zeroKM2=km2==0
+//variables car02
 
-const marca3= "Audi"
-const modelo3= "Q8"
-const ano3= 2023
+
+const brand3= "Audi"
+const model3= "Q8"
+const year3= 2023
 const km3=0
 const zeroKM3=km3==0
+//variables car03
 
 
-let mediaKm=(km1+km2+km3)/3
+let averageKm=("what'is the average kimoter of the 3 cars?", km1+km2+km3)/3
+//operation to know the kilometer average
 
 
-console.log(mediaKm.toFixed(0))
+console.log(averageKm.toFixed(0))
+//print the kilometer average
 
-const verificaZerokm = km1===0 && km2===0 && km3===0
+const checkZerokm = km1===0 && km2===0 && km3===0
+//constant to check if the cars are all zero km
 
-console.log ("O carro é zero km?",verificaZerokm)
+console.log ("The car is zero km?",checkZerokm)
+//print the check
 
-const arrayConforto= ["Direção Hidráulica", "Teto Solar", "Airbag","Câmera de Estacionamento"]
+const arraycomfort= ["Hydraulic steering", "Sunroof", "Airbag","Parking camera"]
+//array to show the comfort of cars
 
 
-console.table(arrayConforto)
-
+console.table(arraycomfort)
+//print de arraycomfort
