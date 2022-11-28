@@ -6,6 +6,7 @@ console.log(`The email ${email} has been successfully registered, Welcome ${what
 //it's printing only the sentence
 
 console.log(`The number of characters in the name is::`, whatname.length)
+//it's counting the number os characters 
 
 
 whatname1= whatname.replaceAll("r","X")
