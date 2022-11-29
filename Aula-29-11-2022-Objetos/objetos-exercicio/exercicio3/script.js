@@ -5,7 +5,7 @@ const pokemon1 = {
 };
 
 
-//a) Crie uma cópia do objeto, acima, mantendo a estrutura, mas trocando **`nome`** por “Squirtle” e **`tipo`** por “Água”
+//a) Crie uma cópia do objeto, acima, mantendo a estrutura, mas trocando **`nome`** por “Squirtle” e *`tipo`** por “Água”
 
 
 const novoPokemon= {
@@ -49,7 +49,7 @@ dano: 45 ,
 tipo: "Grama",
 precisao: 100,})
 
-//e) para a cópia, crie o `ataque` **“Jato de Água”**, com **40 de dano**, **100 de precisão**, e do tipo **“Água”**; e adicione no array.
+//e) para a cópia, crie o `ataque` **“Jato de Água”*, com *40 de dano*, **100 de precisão**, e do tipo **“Água”**; e adicione no array.
 
 
 

@@ -14,7 +14,7 @@ const filme = {
 
 // respostas aqui ⬇️
 
-//a) Qual o código para imprimir o nome do **primeiro** ator/atriz?
+//a) Qual oo código para imprimir o nome do **primeiro** ator/atriz?
 
 
 console.log("O nome do primeiro ator é:",filme.elenco[0])

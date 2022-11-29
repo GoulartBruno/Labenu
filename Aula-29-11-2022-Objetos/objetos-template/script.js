@@ -3,7 +3,7 @@
 const estudante = {
     nome: "Bruno",
     sobrenome: "Goulart",
-    matricula: 25456,
+    matricula: 2456,
     notas: [4, 5, 6, 8]
 
 }
