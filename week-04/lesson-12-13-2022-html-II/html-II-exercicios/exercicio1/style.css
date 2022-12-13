@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica', sans-serif;
+  }
+  
+  header, .a{
+    height: 50px;
+    background-color: #5e5e5e;
+    width: 100vw;
+    text-align: center;
+    color: white;
+  }
+  
+  main, .b{
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+  }
+  
+  section, .c{
+    background-color: #d4d4d4;
+    width: 100%;
+    padding: 20px 20px 0 20px;
+  }
+  
+  article, .d{
+    background-color: #dedede;
+    height: 25%;
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 2%;
+    padding-left: 1%;
+  }
+  
+  footer, .e{
+    background-color: #242424;
+    height: 50px;
+    padding: 20px 0 0 20px;
+    text-align: center;
+    color: white;
+  }
+  
