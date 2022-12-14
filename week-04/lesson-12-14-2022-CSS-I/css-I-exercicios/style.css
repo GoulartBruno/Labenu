@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  font-family: Helvetica, sans-serif;
+}
+
+.bloco {
+  color: white;
+  margin: 15px;
+  height: 7vw;
+  width: 22.6vw;
+  padding-left: 8px;
+  padding-top: 8px;
+}
+
+#bloco-1 {
+  border: solid 5px rgb(184, 142, 63);
+  background-color: orange;
+}
+
+#bloco-2 {
+  border: solid 5px rgb(60, 151, 60);
+  background-color: rgb(81, 133, 81);
+}
+#bloco-3 {
+  border: dashed 5px rgb(22, 204, 22);
+  background-color: rgb(20, 46, 20);
+}
+
+#bloco-4 {
+  border: dashed 5px rgb(252, 135, 2);
+  background-color: rgb(245, 61, 6);
+}
