@@ -1,0 +1,26 @@
+#titulo-importante {
+  color: white;
+  background: blue;
+}
+
+.sub-titulo {
+  color: rgb(0, 0, 0);
+  background: yellow;
+}
+
+section {
+  color: white;
+
+  background: green;
+}
+p {
+  color: black;
+}
+span {
+  color: black;
+}
+footer {
+  color: white;
+
+  background: black;
+}

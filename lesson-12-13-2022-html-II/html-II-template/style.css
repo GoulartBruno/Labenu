@@ -1,0 +1,45 @@
+header{
+    margin: 10px;
+    border: 1px solid #E36414;
+    padding: 5px;
+    color: #E36414;
+  }
+  
+  main{
+    margin: 10px;
+    border: 1px solid #0F4C5C;
+    padding: 5px;
+    color: #0F4C5C;
+    display: flex;
+  }
+  
+  section{
+    margin: 10px;
+    border: 1px solid #FB8B24;
+    padding: 5px;
+    color: #FB8B24;
+    width: 75%;
+  }
+  
+  article{
+    margin: 10px;
+    border: 1px solid #FB8B24;
+    padding: 5px;
+    height: 150px;
+    color:#498467;
+  }
+  
+  aside{
+    margin: 10px;
+    border: 1px solid #9A031E;
+    padding: 5px;
+    color: #9A031E;
+    width: 20%;
+  }
+  
+  footer{
+    margin: 10px;
+    border: 1px solid #98CE00;
+    padding: 5px;
+    color: #98CE00;
+  }
