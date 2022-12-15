@@ -1,0 +1,25 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: orange;
+}
+
+h2.texto-com-background {
+  background-color: yellow;
+  margin-top: 20px;
+}
+
+h2#texto-com-outra-cor {
+  color: green;
+}
