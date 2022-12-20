@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Forms</title>
+</head>
+<body>
+    <h3>Forms tipo Texto:</h3>
+    <form>
+        Primeiro nome:<br>
+        <input type="text" name="Primeiro nome:"><br>
+        Segundo nome:<br>
+        <input type="text" name="Segundo nome:"><br>
+    </form>
+    <br>
+    <hr>
+    <br>
+    <h3>Form tipo Radio:</h3>
+    <form>
+        <input type="radio" name="Gênero" value="Homem" checked>Homem;<br>
+        <input type="radio" name="Gênero" value="Mulher" checked>Mulher;<br>
+        <input type="radio" name="Gênero" value="Outro" checked>Outro;<br>
+    </form>
+    <br>
+    <hr>
+    <br>
+    <h3>Form tipo "Submit"</h3>
+    <form>
+        <form action="actionpage.php">
+        Primeiro nome:<br>
+        <input type="text" name="Primeiro nome:" value="" required><br>
+        Segundo nome:<br>
+        <input type="text" name="Segundo nome:" value="" required><br>
+        <!e-mail adicionado apos a aula de validação dos fomrs-->
+        e-mail:<br>
+        <input type="email" name="e-mail" value="" required autocomplete="off"><br><br> 
+        <input type="submit" value="Enviar">   
+    </form>
+    <br>
+    <hr>
+    <br>
+    <h3>Form de "Pesquisa no google"</h3>
+    <form action="https://www.google.com/search" target="_blank">
+        <label for="q">O que gostaria de pesquisar?</label><br><br>
+        <input type="text" id="q" name="q" placeholder="" required><br><br>
+        <!Required adicionado apos a aula de validação do Forms-->
+        <input type="submit" value="Pesquisar">
+    </form><br><hr><br>
+    <! codigo foi alterado para que o fomr de pesquisa ficasse na vertical. O original da aula, segue abaixo-->
+    <h3>Form de "Pesquisa no google"</h3>
+    <form action="https://www.google.com/search" target="_blank">
+        <label for="q">O que gostaria de pesquisar?</label>
+        <input type="text" id="q" name="q" placeholder="" required>
+        <!Required adicionado apos a aula de validação do Forms-->
+        <input type="submit" value="Pesquisar">
+    </form><br><hr><br>
+    
+</body>
+</html>
