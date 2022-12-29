@@ -1,0 +1,28 @@
+body {
+  background-image: url("https://img.freepik.com/vetores-premium/ilustracao-de-layout-de-skate-de-astronauta-para-design-de-camiseta_157713-551.jpg?w=740");
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: aliceblue;
+}
+
+h1 {
+  background-color: black;
+  color: aliceblue;
+  border: 3px solid;
+  text-align: center;
+}
+
+.colorRed {
+  color: #e74c3c;
+}
+
+#days-of-week {
+  color: #f9d33c;
+}
+
+h3 {
+  background-color: rgb(124, 57, 57);
+  color: aliceblue;
+  border: 3px solid;
+  text-align: center;
+}
