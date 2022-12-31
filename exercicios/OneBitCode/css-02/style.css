@@ -1,20 +1,36 @@
+* {
+  margin: 0px;
+}
+
 .date {
   color: #008080;
-  font-family: "Roboto";
-  position: relative;
-  left: 40px;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 20px;
 }
 
 .post-container {
-  margin: 50px 150px 50px 150px;
+  width: 70%;
+  height: auto;
+  margin: 0px auto 0px auto;
   background-color: #f9f1f1;
   font-family: "Open Sans";
-  position: relative;
-  left: 40px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 h1 {
-  font-family: "Montserrat";
+  font-family: "Montserrat", sans-serif;
   position: relative;
-  left: 40px;
+  margin-bottom: 20px;
+}
+
+.post-container div.post-content {
+  font-family: "Open Sans";
+  width: 90%;
+}
+
+.post-container .post {
+  margin-left: 50px;
+  padding-top: 20px;
+  padding-left: 20px;
 }
