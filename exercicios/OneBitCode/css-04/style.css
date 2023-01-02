@@ -1,0 +1,26 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: rgb(154, 160, 158);
+  min-height: 100vh;
+  display: flex;
+  gap: 0px 15px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap-reverse;
+}
+
+.item {
+  width: 200px;
+  height: 200px;
+  border: 3px solid;
+  font-size: 28px;
+  background-color: rgb(135, 226, 226);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

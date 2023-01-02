@@ -1,0 +1,18 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: rgb(154, 160, 158);
+  min-height: 100vh;
+}
+
+.item {
+  width: 200px;
+  height: 200px;
+  border: 2px solid;
+  background-color: azure;
+  font-size: 20px;
+}
