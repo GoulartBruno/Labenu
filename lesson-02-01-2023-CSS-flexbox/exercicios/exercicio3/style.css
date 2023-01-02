@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  width: 900px;
+  margin: 0 auto;
+  background-color: orange;
+}
+
+section {
+  height: 100px;
+  background-color: steelblue;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#section-1 {
+  flex-grow: 1;
+}
+
+#section-2 {
+  flex-grow: 2;
+}
+
+#section-3 {
+  flex-grow: 3;
+}
+
+#section-4 {
+  flex-basis: 200px;
+}
+
+#section-5 {
+  flex-grow: 1;
+  order: -1;
+}
