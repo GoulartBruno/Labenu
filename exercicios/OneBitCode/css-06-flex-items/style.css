@@ -28,6 +28,7 @@ header {
   align-items: center;
   padding: 50px;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 footer {
@@ -39,8 +40,8 @@ footer {
 }
 
 .itens {
-  width: 100px;
-  height: 100px;
+  width: 300px;
+  height: 200px;
   border: 2px solid;
   background-color: rgb(204, 33, 33);
   display: flex;
