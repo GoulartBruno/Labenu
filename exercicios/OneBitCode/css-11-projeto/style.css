@@ -1,0 +1,42 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.container {
+  height: 70px;
+  width: 100vw;
+  background-color: black;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 50px;
+}
+
+.img-red {
+  width: 300px;
+}
+
+.about.us {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.nav {
+  font-size: 12px;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 8px 10px;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  flex-wrap: nowrap;
+}
+
+.nav:hover {
+  border-color: red;
+}

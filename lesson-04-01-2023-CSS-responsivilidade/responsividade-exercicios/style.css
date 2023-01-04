@@ -1,0 +1,124 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  color: white;
+  box-sizing: border-box;
+}
+.container {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: 1fr;
+  font-family: "Seymour One", sans-serif;
+  font-size: 30px;
+  gap: 15px;
+  border: 15px solid white;
+  border-radius: 5%;
+}
+
+#item-1 {
+  background-color: #fe7e02;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+#item-2 {
+  background-color: steelblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#item-3 {
+  background-color: #45525b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+@media (max-width: 1000px) {
+  .container {
+    min-height: 100vh;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    display: grid;
+    font-size: 20px;
+  }
+  #item-1 {
+    background-color: #fe7e02;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    order: 3;
+    writing-mode: horizontal-tb;
+    transform: rotate(0deg);
+    grid-row: 12/13;
+    grid-column: 1/7;
+  }
+  #item-2 {
+    background-color: steelblue;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    order: 1;
+    grid-row: 1/12;
+    grid-column: 1/6;
+  }
+  #item-3 {
+    background-color: #45525b;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    order: 2;
+    writing-mode: vertical-lr;
+    transform: rotate(0deg);
+    grid-row: 1/12;
+    grid-column: 6/7;
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    border-radius: 30px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    display: grid;
+    font-size: 20px;
+  }
+  #item-1 {
+    background-color: #fe7e02;
+    grid-column: ;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    order: 3;
+    writing-mode: horizontal-tb;
+    grid-row: 11/13;
+    grid-column: 1/4;
+  }
+  #item-2 {
+    background-color: steelblue;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    order: 1;
+    grid-row: 1/11;
+    grid-column: 1/7;
+  }
+  #item-3 {
+    background-color: #45525b;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    order: 2;
+    writing-mode: horizontal-tb;
+    grid-row: 11/13;
+    grid-column: 4/7;
+  }
+}
