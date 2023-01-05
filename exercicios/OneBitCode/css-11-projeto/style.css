@@ -4,39 +4,117 @@
   box-sizing: border-box;
 }
 
-.container {
-  height: 70px;
+.main {
+  height: 100vh;
   width: 100vw;
-  background-color: black;
-  align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 50px;
+}
+
+.header {
+  height: 10vh;
+  background-color: rgba(0, 0, 0, 0.812);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 50px;
 }
 
 .img-red {
-  width: 300px;
+  width: 170px;
 }
 
 .about.us {
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
 }
 
 .nav {
-  font-size: 12px;
-  border: 2px solid white;
-  border-radius: 10px;
+  font-size: 14px;
+  color: white;
   padding: 8px 10px;
   background-color: transparent;
-  color: white;
+  border: 0px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0);
   cursor: pointer;
-  transition: 0.3s;
-  flex-wrap: nowrap;
+  transition: 0.4s;
 }
 
 .nav:hover {
-  border-color: red;
+  border-color: rgb(0, 0, 0);
+}
+.title {
+  height: 15vh;
+  text-align: center;
+  padding: 15px;
+}
+
+.title p {
+  text-align: center;
+  padding-top: 5px;
+}
+
+.body {
+  height: auto;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 5fr 1fr;
+  justify-items: end;
+  background-color: aqua;
+}
+
+.sports {
+  grid-column: 1/2;
+  grid-template-rows: 1/2;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.sport img {
+  height: 160px;
+  width: 220px;
+  border-radius: 5%;
+}
+
+.sport h5 {
+  font-size: 16px;
+  padding: 5px;
+}
+
+.others {
+  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.812);
+  color: white;
+  gap: 30px;
+}
+
+.others img {
+  height: 140px;
+  width: 190px;
+  border-radius: 5%;
+}
+
+.sport p {
+  height: 160px;
+  width: 210px;
+  padding-left: 5px;
+}
+
+.others p {
+  text-align: center;
+  padding: 20px;
+}
+
+.footer {
+  height: 10vh;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.812);
 }
