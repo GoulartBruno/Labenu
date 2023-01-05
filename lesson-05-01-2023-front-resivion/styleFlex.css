@@ -1,0 +1,81 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.container {
+  height: 12.5rem;
+  width: 27.5rem;
+  background-color: #729f92;
+  border-radius: 0.75rem;
+  margin: 3.125rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.box01 {
+  width: 50vw;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding-left: 30px;
+  padding: 20px;
+}
+
+.name h {
+  font-family: "Inter";
+  font-size: 32px;
+}
+.name p {
+  font-family: "Inter";
+  font-size: 16px;
+}
+
+.ataques {
+  display: flex;
+  padding-top: 10px;
+  gap: 0.313rem;
+}
+
+.pokemon {
+  position: absolute;
+  left: 285px;
+  top: 0px;
+  z-index: 1;
+}
+
+.pokebola {
+  position: absolute;
+  left: 238px;
+  top: 43px;
+  z-index: 0;
+}
+
+.box03 {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  justify-content: space-between;
+  padding: 15px 30px;
+  font-size: 16px;
+}
+
+.Details {
+  width: 4.625rem;
+  height: 1.5rem;
+  line-height: 24px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  text-decoration: underline;
+  font-size: 16px;
+}
+
+.button {
+  width: 8rem;
+  height: 2rem;
+  border: transparent;
+  border-radius: 0.2rem;
+  font-size: 16px;
+}
