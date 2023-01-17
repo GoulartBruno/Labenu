@@ -19,7 +19,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 50px;
+  padding: 0px 20px;
 }
 
 .img-red {
@@ -32,7 +32,7 @@
 }
 
 .nav {
-  font-size: 14px;
+  font-size: 0.9rem;
   color: white;
   padding: 8px 10px;
   background-color: transparent;
@@ -62,7 +62,7 @@
   grid-template-rows: 1fr;
   grid-template-columns: 5fr 1fr;
   justify-items: end;
-  background-color: aqua;
+  margin: 15px;
 }
 
 .sports {
@@ -89,10 +89,12 @@
 .others {
   display: grid;
   display: flex;
+  width: 17rem;
   flex-direction: column;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.812);
   color: white;
+  margin: 0px 20px;
   gap: 30px;
 }
 
@@ -117,4 +119,42 @@
   height: 10vh;
   display: flex;
   background-color: rgba(0, 0, 0, 0.812);
+}
+
+@media (max-width: 540px) {
+  .header {
+    height: 10vh;
+    background-color: rgba(0, 0, 0, 0.812);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+  }
+  .img-red {
+    width: 7rem;
+  }
+  .body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .others {
+    width: 100%;
+    margin: 0px;
+  }
+  .nav {
+    font-size: 0.7rem;
+    padding: 3px;
+  }
+}
+
+@media (max-width: 320px) {
+  .img-red {
+    width: 6rem;
+  }
+  .nav {
+    font-size: 0.5rem;
+    padding: 2px;
+  }
 }
