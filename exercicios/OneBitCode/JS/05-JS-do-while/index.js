@@ -1,29 +1,69 @@
-let comando = +prompt(`Choose an option:
-1- Human Resources
-2- Financial
-3- Engineering
-4- IT
-5- End call`);
+// let money = +prompt("How much money do you have?");
+// let soma = money;
+// let question = +prompt(`You have $${money}
+// Would you like to add or remove money?
+// Type:
+// 1- Add
+// 2- Remove
+// 3- Exit`);
 
-while (comando !== 5) {
-  if (comando > 0 && comando < 5) {
-    alert(`You chose the ${comando} option`);
-    comando = +prompt(`Choose other option:
-    1- Human Resources
-    2- Financial
-    3- Engineering
-    4- IT
-    5- End call`);
-  } else if (comando === 5) {
-  } else {
-    alert(`You have chosen an invalid number`);
-    comando = +prompt(`Choose other option:
-    1- Human Resources
-    2- Financial
-    3- Engineering
-    4- IT
-    5- End call`);
+// while (question !== 3) {
+//   if (question == 1) {
+//     money = +prompt("How much money would you like to add?");
+//     soma += money;
+//     question = +prompt(`You have $${soma}
+// Would you like to add or remove money?
+// Type:
+// 1- Add
+// 2- Remove
+// 3- Exit`);
+//   } else if (question == 2) {
+//     money = +prompt("How much money would you like to remove?");
+//     soma -= money;
+//     question = +prompt(`You have $${soma}
+//   Would you like to add or remove money?
+//   Type:
+//   1- Add
+//   2- Remove
+//   3- Exit`);
+//   } else {
+//     alert("You entered an invalid number, Try again");
+//     question = +prompt(`You have $${soma}
+//     Would you like to add or remove money?
+//     Type:
+//     1- Add
+//     2- Remove
+//     3- Exit`);
+//   }
+// }
+
+let money = +prompt("How much money do you have?");
+let soma = money;
+let question = "";
+
+do {
+  question = prompt(`You have $${money}
+   Would you like to add or remove money?
+   Type:
+   1- Add
+   2- Remove
+   3- Exit`);
+
+  switch (question) {
+    case "1":
+      money = +prompt("How much money would you like to add?");
+      soma += money;
+      alert(`You have $${soma}`);
+      break;
+    case "2":
+      money = +prompt("How much money would you like to remove?");
+      soma -= money;
+      alert(`You have $${soma}`);
+      break;
+    case "3":
+      alert("Finishing");
+      break;
+    default:
+      alert("You entered an invalid number, try again.");
   }
-}
-
-alert("You ended the call");
+} while (question !== "3");
