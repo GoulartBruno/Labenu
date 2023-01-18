@@ -1,0 +1,85 @@
+import React from "react";
+import "./components/CardVideo";
+import CardVideo from "./components/CardVideo";
+import "./styles.css";
+
+export default function App() {
+  const infoVideo01 = {
+    imagem: "https://picsum.photos/400/400?a=1",
+    titulo: "Street Berlin",
+  };
+  const infoVideo02 = {
+    imagem: "https://picsum.photos/400/400?a=2",
+    titulo: "Sunset Mallorca.",
+  };
+  const infoVideo03 = {
+    imagem: "https://picsum.photos/400/400?a=3",
+    titulo: "Dusk Frankfurt.",
+  };
+  const infoVideo04 = {
+    imagem: "https://picsum.photos/400/400?a=4 ",
+    titulo: "Madrid.",
+  };
+  const infoVideo05 = {
+    imagem: "https://picsum.photos/400/400?a=5",
+    titulo: "Forest Oslo.",
+  };
+  const infoVideo06 = {
+    imagem: "https://picsum.photos/400/400?a=6 ",
+    titulo: "Bridge, London.",
+  };
+  const infoVideo07 = {
+    imagem: "https://picsum.photos/400/400?a=7",
+    titulo: "Barcelona.",
+  };
+  const infoVideo08 = {
+    imagem: "https://picsum.photos/400/400?a=8",
+    titulo: "Houston.",
+  };
+
+  const user01 = { autor: "Julio", fotoUser: "https://i.pravatar.cc/330" };
+  const user02 = { autor: "Bruno", fotoUser: "https://i.pravatar.cc/320" };
+  const user03 = { autor: "Michelle", fotoUser: "https://i.pravatar.cc/200" };
+  const user04 = { autor: "Henrique", fotoUser: "https://i.pravatar.cc/300" };
+  const user05 = { autor: "Camila", fotoUser: "https://i.pravatar.cc/350" };
+  const user06 = { autor: "Leticia", fotoUser: "https://i.pravatar.cc/30" };
+  const user07 = { autor: "Roberto", fotoUser: "https://i.pravatar.cc/301" };
+  const user08 = { autor: "Felipe", fotoUser: "https://i.pravatar.cc/306" };
+
+  return (
+    <div>
+      <div className="tela-inteira">
+        <header>
+          <h1>LabeTube</h1>
+          <input type="text" placeholder="Busca" id="campoDeBusca" />
+        </header>
+
+        <main>
+          <nav className="menu-vertical">
+            <ul>
+              <li className="botoes-meunu-vertical">Início</li>
+              <li className="botoes-meunu-vertical">Em alta</li>
+              <li className="botoes-meunu-vertical">Inscrições</li>
+              <hr />
+              <li className="botoes-meunu-vertical">Originais</li>
+              <li className="botoes-meunu-vertical">Histórico</li>
+            </ul>
+          </nav>
+          <section className="painel-de-videos">
+            <CardVideo infoVideo={infoVideo01} user={user01} />
+            <CardVideo infoVideo={infoVideo02} user={user02} />
+            <CardVideo infoVideo={infoVideo03} user={user03} />
+            <CardVideo infoVideo={infoVideo04} user={user04} />
+            <CardVideo infoVideo={infoVideo05} user={user05} />
+            <CardVideo infoVideo={infoVideo06} user={user06} />
+            <CardVideo infoVideo={infoVideo07} user={user07} />
+            <CardVideo infoVideo={infoVideo08} user={user08} />
+          </section>
+        </main>
+        <footer>
+          <h4>Oi! Eu moro no footer!</h4>
+        </footer>
+      </div>
+    </div>
+  );
+}
