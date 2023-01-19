@@ -10,42 +10,6 @@ body {
   flex-direction: column;
 }
 
-header {
-  background-color: orange;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 50px;
-  height: 10%;
-}
-
-main {
-  display: flex;
-}
-
-.menu-vertical {
-  flex-basis: 200px;
-  border-right-style: solid;
-  border-right-width: thin;
-  display: flex;
-}
-
-.botoes-meunu-vertical {
-  list-style-type: none;
-}
-
-.painel-de-videos {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: row;
-  row-gap: 10px;
-  column-gap: 10px;
-  flex-wrap: wrap;
-  margin: 20px;
-  justify-content: center;
-  padding: 20px;
-}
-
 .box-pagina-principal {
   display: flex;
   flex-direction: column;
@@ -54,16 +18,6 @@ main {
   align-items: start;
   justify-items: stretch;
   justify-content: center;
-}
-
-footer {
-  background: #333b3e;
-  color: white;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  padding: 0 10px;
 }
 
 .box-pagina-principal > img {
@@ -79,10 +33,4 @@ h4 {
   padding: 10px;
   display: flex;
   flex-direction: row;
-}
-
-#autor {
-  width: 50px;
-  height: 50px;
-  border-radius: 20rem;
 }
