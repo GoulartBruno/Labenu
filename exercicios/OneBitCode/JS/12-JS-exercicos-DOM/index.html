@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="index.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="time">
+      <label for="text" id="text12">Jogador</label>
+      <input type="text" id="nome" /> <br />
+      <label for="text" id="text1">Posição</label>
+      <input type="text" id="posicao" /> <br />
+      <label for="text" id="text13">Numero da camisa</label>
+      <input type="text" id="numero" /> <br />
+      <button onclick="addInput()">Add Jogador</button>
+      <br /><br /><br />
+      <input type="text" id="remover" /> <br />
+      <button onclick="removeJogador()">Remove Jogador</button>
+    </section>
+    <h3>Escalação</h3>
+    <section id="escalacao"></section>
+    <button id="confirmar" onclick="confirmar()">Confirmar escalação</button>
+    <h3>Escalação Final</h3>
+    <section id="escalaFinal"></section>
+  </body>
+</html>
