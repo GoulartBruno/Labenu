@@ -1,0 +1,16 @@
+{
+  "satellites": [
+    {
+      "name": "Sol",
+      "description": "Mercúrio é o menor e mais interno planeta do Sistema Solar, orbitando o Sol a cada 87,969 dias terrestres. A sua órbita tem a maior excentricidade e o seu ...",
+      "img_url": "http://s2.glbimg.com/BgWxSZbymvV_HhJaGOTQqMWHGZn2-TkZ9LdOdYB9vrBIoz-HdGixxa_8qOZvMp3w/s.glbimg.com/jo/g1/f/original/2013/02/21/mercurio.jpg",
+      "link": "https://pt.wikipedia.org/wiki/Merc%C3%BArio_(planeta)"
+    },
+    {
+      "name": "Lua",
+      "description": " Plutão é um planeta anão do Sistema Solar e o nono maior e décimo mais massivo objeto observado diretamente orbitando o Sol. Originalmente classificado como um ...",
+      "img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Pluto_in_True_Color_-_High-Res.jpg/280px-Pluto_in_True_Color_-_High-Res.jpg",
+      "link": "https://pt.wikipedia.org/wiki/Plut%C3%A3o"
+    }
+  ]
+}
