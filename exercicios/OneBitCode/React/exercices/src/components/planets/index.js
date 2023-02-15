@@ -11,21 +11,16 @@ async function getPlanets() {
   return data;
 }
 
-class Planets extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      planets: [],
-    };
-  }
 
-  componentDidMount() {
-    getPlanets().then((data) => {
-      this.setState((state) => ({
-        planets: data["planets"],
-      }));
-    });
-  }
+componentDidMount() {
+  getPlanets().then((data) => {
+    this.setState((state) => ({
+      planets: data["planets"],
+    }));
+  });
+}
+
+const Planets = () =>{
 
   removeLast = () => {
     let new_planets = [...this.state.planets];
@@ -42,7 +37,6 @@ class Planets extends React.Component {
     }));
   };
 
-  render() {
     return (
       <Fragment>
         <h3>Planets List</h3>
@@ -61,7 +55,6 @@ class Planets extends React.Component {
         ))}
       </Fragment>
     );
-  }
 }
 
 export default Planets;
