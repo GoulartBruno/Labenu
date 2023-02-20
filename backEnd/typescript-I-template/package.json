@@ -1,0 +1,27 @@
+{
+  "name": "typescript-i-template",
+  "version": "1.0.0",
+  "description": "**Vamos utilizar esse repositório para as práticas da aula!**",
+  "main": "index.js",
+  "scripts": {
+    "start-frota": "tsc && node ./build/tipando/index.js",
+    "start-ex-1": "tsc && node ./build/fixacao/exercicio1/index.js",
+    "start-ex-2": "tsc && node ./build/fixacao/exercicio2/index.js",
+    "start-ex-3": "tsc && node ./build/fixacao/exercicio3/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/labenuexercicios/typescript-I-template.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/labenuexercicios/typescript-I-template/issues"
+  },
+  "homepage": "https://github.com/labenuexercicios/typescript-I-template#readme",
+  "devDependencies": {
+    "@types/node": "^18.15.5",
+    "typescript": "^4.9.5"
+  }
+}
