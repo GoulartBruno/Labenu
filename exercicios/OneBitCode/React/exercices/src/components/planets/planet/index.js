@@ -30,7 +30,7 @@ class Planet extends React.Component {
     if (this.props.title_with_underline) {
       title = (
         <h4>
-          <u>{this.componentWillUnmountprops.name}</u>
+          <u>{this.props.name}</u>
         </h4>
       );
     } else {
