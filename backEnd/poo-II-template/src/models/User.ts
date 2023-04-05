@@ -1,49 +1,49 @@
-export class User {    
-    constructor(
-        private id: string,
-        private name: string,
-        private email: string,
-        private password: string,
-        private createdAt: string
-    ) {}
+export class User {
+  constructor(
+    private id: string,
+    private name: string,
+    private email: string,
+    private password: string,
+    private createdAt: string
+  ) {}
 
-    public getId(): string {
-        return this.id
-    }
-    
-    public setId(value: string): void {
-        this.id = value
-    }
+  public getId(): string {
+    return this.id;
+  }
 
-    public getName(): string {
-        return this.name
-    }
+  public setId(value: string): void {
+    this.id = value;
+  }
 
-    public setName(value: string): void {
-        this.name = value
-    }
+  public getName(): string {
+    return this.name;
+  }
 
-    public getEmail(): string {
-        return this.email
-    }
+  public setName(value: string): void {
+    this.name = value;
+  }
 
-    public setEmail(value: string): void {
-        this.email = value
-    }
+  public getEmail(): string {
+    return this.email;
+  }
 
-    public getPassword(): string {
-        return this.password
-    }
+  public setEmail(value: string): void {
+    this.email = value;
+  }
 
-    public setPassword(value: string): void {
-        this.password = value
-    }
+  public getPassword(): string {
+    return this.password;
+  }
 
-    public getCreatedAt(): string {
-        return this.createdAt
-    }
+  public setPassword(value: string): void {
+    this.password = value;
+  }
 
-    public setCreatedAt(value: string): void {
-        this.createdAt = value
-    }
+  public getCreatedAt(): string {
+    return this.createdAt;
+  }
+
+  public setCreatedAt(value: string): void {
+    this.createdAt = value;
+  }
 }
