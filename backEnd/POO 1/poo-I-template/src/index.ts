@@ -1,12 +1,8 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import { TAccountDB, TAccountDBPost, TUserDB, TUserDBPost } from "./types";
-
+import { db } from "./database/knex";
 import { User } from "./models/User";
-import { Account } from "./models/Account";
-import { UserDatabase } from "./database/UserDatabase";
-import { strict } from "assert";
-import { AccountDatabase } from "./database/AccountDatabase";
 
 const app = express();
 
@@ -37,12 +33,21 @@ app.get("/ping", async (req: Request, res: Response) => {
 
 app.get("/users", async (req: Request, res: Response) => {
   try {
-    const q = req.query.q as string | undefined;
+    const q = req.query.q;
 
-    const userDatabase = new UserDatabase();
+    let usersDB;
 
-    const usersDB = await userDatabase.findUsers(q);
-
+    if (q) {
+      const result: TUserDB[] = await db("users").where(
+        "name",
+        "LIKE",
+        `%${q}%`
+      );
+      usersDB = result;
+    } else {
+      const result: TUserDB[] = await db("users");
+      usersDB = result;
+    }
     const users: User[] = usersDB.map(
       (userDB) =>
         new User(
@@ -53,8 +58,7 @@ app.get("/users", async (req: Request, res: Response) => {
           userDB.created_at
         )
     );
-
-    res.status(200).send(users);
+    res.status(200).send(usersDB);
   } catch (error) {
     console.log(error);
 
@@ -94,23 +98,28 @@ app.post("/users", async (req: Request, res: Response) => {
       throw new Error("'password' deve ser string");
     }
 
-    // const [userDBExists]: TUserDB[] | undefined[] = await db("users").where({
-    //   id,
-    // });
-    const userDatabase = new UserDatabase();
-    const userDBExists = await userDatabase.findUserById(id);
+    const [userDBExists]: TUserDB[] | undefined[] = await db("users").where({
+      id,
+    });
 
     if (userDBExists) {
       res.status(400);
       throw new Error("'id' já existe");
     }
 
+    // const newUser: TUserDBPost = {
+    //   id,
+    //   name,
+    //   email,
+    //   password,
+    // };
+
     const newUser = new User(
       id,
       name,
       email,
       password,
-      new Date().toISOString()
+      new Date().toISOString() // retorna data atual
     );
 
     const newUserDB: TUserDB = {
@@ -120,9 +129,8 @@ app.post("/users", async (req: Request, res: Response) => {
       password: newUser.getPassword(),
       created_at: newUser.getCreatedAt(),
     };
-
-    await userDatabase.insertUser(newUserDB);
-
+    await db("users").insert(newUserDB);
+    const [userDB]: TUserDB[] = await db("users").where({ id });
     res.status(201).send(newUser);
   } catch (error) {
     console.log(error);
@@ -141,23 +149,9 @@ app.post("/users", async (req: Request, res: Response) => {
 
 app.get("/accounts", async (req: Request, res: Response) => {
   try {
-    // const accountsDB: TAccountDB[] = await db("accounts");
+    const accountsDB: TAccountDB[] = await db("accounts");
 
-    const accountDataBase = new AccountDatabase(); //primeiro instancia
-
-    const accountsDB = await accountDataBase.findeAccount();
-
-    const accounts = accountsDB.map(
-      (accountDB) =>
-        new Account(
-          accountDB.id,
-          accountDB.balance,
-          accountDB.owner_id,
-          accountDB.created_at
-        )
-    );
-
-    res.status(200).send(accounts);
+    res.status(200).send(accountsDB);
   } catch (error) {
     console.log(error);
 
@@ -177,28 +171,16 @@ app.get("/accounts/:id/balance", async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
 
-    // const [accountDB]: TAccountDB[] | undefined[] = await db("accounts").where({
-    //   id,
-    // });
-    const accountDataBase = new AccountDatabase(); //primeiro instancia
-
-    const accountDB = await accountDataBase.findBallanceByAccountId(id);
+    const [accountDB]: TAccountDB[] | undefined[] = await db("accounts").where({
+      id,
+    });
 
     if (!accountDB) {
       res.status(404);
       throw new Error("'id' não encontrado");
     }
 
-    const account = new Account(
-      accountDB.id,
-      accountDB.balance,
-      accountDB.owner_id,
-      accountDB.created_at
-    );
-
-    const balance = account.getBalance();
-
-    res.status(200).send({ balance });
+    res.status(200).send({ balance: accountDB.balance });
   } catch (error) {
     console.log(error);
 
@@ -228,29 +210,24 @@ app.post("/accounts", async (req: Request, res: Response) => {
       throw new Error("'ownerId' deve ser string");
     }
 
-    // const [accountDBExists]: TAccountDB[] | undefined[] = await db(
-    //   "accounts"
-    // ).where({ id });
-    const accountDataBase = new AccountDatabase(); //primeiro instancia
-    const accountDBExists = await accountDataBase.findAccountById(id);
+    const [accountDBExists]: TAccountDB[] | undefined[] = await db(
+      "accounts"
+    ).where({ id });
 
     if (accountDBExists) {
       res.status(400);
       throw new Error("'id' já existe");
     }
 
-    const newAccount = new Account(id, 0, ownerId, new Date().toISOString());
-
-    const newAccountDB: TAccountDB = {
-      id: newAccount.getId(),
-      balance: newAccount.getBalance(),
-      owner_id: newAccount.getOwnerId(),
-      created_at: newAccount.getCreatedAt(),
+    const newAccount: TAccountDBPost = {
+      id,
+      owner_id: ownerId,
     };
 
-    await accountDataBase.insertAccount(newAccountDB);
+    await db("accounts").insert(newAccount);
+    const [accountDB]: TAccountDB[] = await db("accounts").where({ id });
 
-    res.status(201).send(newAccount);
+    res.status(201).send(accountDB);
   } catch (error) {
     console.log(error);
 
@@ -276,33 +253,20 @@ app.put("/accounts/:id/balance", async (req: Request, res: Response) => {
       throw new Error("'value' deve ser number");
     }
 
-    // const [accountDB]: TAccountDB[] | undefined[] = await db("accounts").where({
-    //   id,
-    // });
-    const accountDataBase = new AccountDatabase(); //primeiro instancia
-
-    const accountDB = await accountDataBase.findBallanceByAccountId(id);
+    const [accountDB]: TAccountDB[] | undefined[] = await db("accounts").where({
+      id,
+    });
 
     if (!accountDB) {
       res.status(404);
       throw new Error("'id' não encontrado");
     }
 
-    const account = new Account(
-      accountDB.id,
-      accountDB.balance,
-      accountDB.owner_id,
-      accountDB.created_at
-    );
+    accountDB.balance += value;
 
-    const newBalance = account.getBalance() + value;
-    account.setBalance(newBalance);
+    await db("accounts").update({ balance: accountDB.balance }).where({ id });
 
-    // await db("accounts").update({ balance: newBalance }).where({ id });
-
-    await accountDataBase.updateBalanceByAccountId(id, newBalance);
-
-    res.status(200).send(account);
+    res.status(200).send(accountDB);
   } catch (error) {
     console.log(error);
 
@@ -317,3 +281,19 @@ app.put("/accounts/:id/balance", async (req: Request, res: Response) => {
     }
   }
 });
+
+const usuario1 = new User(
+  "001",
+  "Matheus",
+  "matheus@email.com",
+  "password",
+  "17/04/2023"
+);
+
+// console.log(usuario1.email); // só consigo acessar quando estiver public
+// usuario1.id = "u001" // só consigo alterar quando estiver public
+console.log(usuario1);
+console.log("get id", usuario1.getId());
+
+usuario1.setId("u001");
+console.log(usuario1);
