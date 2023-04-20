@@ -7,6 +7,8 @@ import { TAuthor } from "./types";
 import { Authors } from "./dataBase/models/Authors";
 import { BooksDataBase } from "./dataBase/BooksDataBase";
 import { AuthorsDataBase } from "./dataBase/AuthorsDataBase";
+import { BooksController } from "./dataBase/Controller/BooksController";
+import { AuthorsController } from "./dataBase/Controller/AuthorsController";
 
 const app = express();
 app.use(cors());
@@ -34,156 +36,164 @@ app.get("/ping", async (req: Request, res: Response) => {
   }
 });
 
-app.get("/books", async (req: Request, res: Response) => {
-  try {
-    const q = req.query.q as string | undefined;
-    // let books;
-    // if (q) {
-    //   const result: TBooks[] = await db("books").where("id", "LIKE", `%${q}%`);
-    //   books = result;
-    // } else {
-    //   const result: TBooks[] = await db("books");
-    //   books = result;
-    // }
+const booksController = new BooksController();
+app.get("/books", booksController.getBooks);
+//async (req: Request, res: Response) => {
+//   try {
+//     const q = req.query.q as string | undefined;
+//     // let books;
+//     // if (q) {
+//     //   const result: TBooks[] = await db("books").where("id", "LIKE", `%${q}%`);
+//     //   books = result;
+//     // } else {
+//     //   const result: TBooks[] = await db("books");
+//     //   books = result;
+//     // }
 
-    const booksDataBase = new BooksDataBase();
+//     const booksDataBase = new BooksDataBase();
 
-    const books = await booksDataBase.findBooks(q);
+//     const books = await booksDataBase.findBooks(q);
 
-    const booksDB: Books[] = books.map(
-      (book) =>
-        new Books(
-          book.id,
-          book.titulo,
-          book.pages,
-          book.created_at,
-          book.author_book
-        )
-    );
+//     const booksDB: Books[] = books.map(
+//       (book) =>
+//         new Books(
+//           book.id,
+//           book.titulo,
+//           book.pages,
+//           book.created_at,
+//           book.author_book
+//         )
+//     );
 
-    res.status(200).send(books);
-  } catch (error) {
-    console.log(error);
+//     res.status(200).send(books);
+//   } catch (error) {
+//     console.log(error);
 
-    if (req.statusCode === 200) {
-      res.status(500);
-    }
+//     if (req.statusCode === 200) {
+//       res.status(500);
+//     }
 
-    if (error instanceof Error) {
-      res.send(error.message);
-    } else {
-      res.send("Erro inesperado");
-    }
-  }
-});
+//     if (error instanceof Error) {
+//       res.send(error.message);
+//     } else {
+//       res.send("Erro inesperado");
+//     }
+//   }
+// });
 
-app.get("/authors", async (req: Request, res: Response) => {
-  try {
-    const q = req.query.q;
-    let authors;
-    // if (q) {
-    //   const result: TAuthor[] = await db("authors").where(
-    //     "id",
-    //     "LIKE",
-    //     `%${q}%`
-    //   );
-    //   authors = result;
-    // } else {
-    //   const result: TAuthor[] = await db("authors");
-    //   authors = result;
-    // }
-    const authorsDataBase = new AuthorsDataBase();
+const authorsController = new AuthorsController();
+app.get("/authors", authorsController.getAuthor);
+// async (req: Request, res: Response) => {
+//   try {
+//     const q = req.query.q as string | undefined;
 
-    const authors = await authorsDataBase.findAuthors(q);
+//     // let authors;
 
-    const authorsDB: Authors[] = authors.map(
-      (author) => new Authors(author.id, author.name)
-    );
+//     // if (q) {
+//     //   const result: TAuthor[] = await db("authors").where(
+//     //     "id",
+//     //     "LIKE",
+//     //     `%${q}%`
+//     //   );
+//     //   authors = result;
+//     // } else {
+//     //   const result: TAuthor[] = await db("authors");
+//     //   authors = result;
+//     // }
+//     const authorsDataBase = new AuthorsDataBase();
 
-    res.status(200).send(authors);
-  } catch (error) {
-    console.log(error);
+//     const authors = await authorsDataBase.findAuthors(q);
 
-    if (req.statusCode === 200) {
-      res.status(500);
-    }
+//     const authorsDB: Authors[] = authors.map(
+//       (author) => new Authors(author.id, author.name)
+//     );
 
-    if (error instanceof Error) {
-      res.send(error.message);
-    } else {
-      res.send("Erro inesperado");
-    }
-  }
-});
+//     res.status(200).send(authors);
+//   } catch (error) {
+//     console.log(error);
 
-app.post("/books", async (req: Request, res: Response) => {
-  try {
-    const { id, titulo, pages, author_book } = req.body;
+//     if (req.statusCode === 200) {
+//       res.status(500);
+//     }
 
-    if (typeof id !== "string") {
-      res.status(400);
-      throw new Error("'id' deve ser string");
-    }
+//     if (error instanceof Error) {
+//       res.send(error.message);
+//     } else {
+//       res.send("Erro inesperado");
+//     }
+//   }
+// });
 
-    if (typeof titulo !== "string") {
-      res.status(400);
-      throw new Error("'titulo' deve ser string");
-    }
+app.post("/books", booksController.createBooks);
+//async (req: Request, res: Response) => {
+//   try {
+//     const { id, titulo, pages, author_book } = req.body;
 
-    if (typeof pages !== "number") {
-      res.status(400);
-      throw new Error("'duracao' deve ser number");
-    }
+//     if (typeof id !== "string") {
+//       res.status(400);
+//       throw new Error("'id' deve ser string");
+//     }
 
-    // const [bookDBExists]: TBooks[] | undefined[] = await db("books").where({
-    //   id,
-    // });
-    const booksDataBase = new BooksDataBase();
+//     if (typeof titulo !== "string") {
+//       res.status(400);
+//       throw new Error("'titulo' deve ser string");
+//     }
 
-    const bookDBExists = await booksDataBase.findeBooksById(id);
+//     if (typeof pages !== "number") {
+//       res.status(400);
+//       throw new Error("'duracao' deve ser number");
+//     }
 
-    if (bookDBExists) {
-      res.status(400);
-      throw new Error("'id' já existe");
-    }
+//     // const [bookDBExists]: TBooks[] | undefined[] = await db("books").where({
+//     //   id,
+//     // });
+//     const booksDataBase = new BooksDataBase();
 
-    const newBook = new Books(
-      id,
-      titulo,
-      pages,
-      new Date().toISOString(),
-      author_book
-    );
+//     const books = await booksDataBase.findeBooksById(id);
 
-    const newBooksDB: TBooks = {
-      id: newBook.getId(),
-      titulo: newBook.getTitulo(),
-      pages: newBook.getPages(),
-      created_at: newBook.getCreatedAt(),
-      author_book: newBook.getAuthor_book(),
-    };
+//     if (books) {
+//       res.status(400);
+//       throw new Error("'id' já existe");
+//     }
 
-    // await db("books").insert(newBooksDB);
+//     const newBook = new Books(
+//       id,
+//       titulo,
+//       pages,
+//       new Date().toISOString(),
+//       author_book
+//     );
 
-    await booksDataBase.insertBook(newBooksDB);
+//     const newBooksDB: TBooks = {
+//       id: newBook.getId(),
+//       titulo: newBook.getTitulo(),
+//       pages: newBook.getPages(),
+//       created_at: newBook.getCreatedAt(),
+//       author_book: newBook.getAuthor_book(),
+//     };
 
-    res.status(201).send(newBook);
-  } catch (error) {
-    console.log(error);
+//     // await db("books").insert(newBooksDB);
 
-    if (req.statusCode === 200) {
-      res.status(500);
-    }
+//     await booksDataBase.insertBook(newBooksDB);
 
-    if (error instanceof Error) {
-      res.send(error.message);
-    } else {
-      res.send("Erro inesperado");
-    }
-  }
-});
+//     res.status(201).send(newBook);
+//   } catch (error) {
+//     console.log(error);
 
-// app.post("/authors", async (req: Request, res: Response) => {
+//     if (req.statusCode === 200) {
+//       res.status(500);
+//     }
+
+//     if (error instanceof Error) {
+//       res.send(error.message);
+//     } else {
+//       res.send("Erro inesperado");
+//     }
+//   }
+// });
+
+app.post("/authors", authorsController.createAuthor);
+//async (req: Request, res: Response) => {
 //   try {
 //     const { id, name } = req.body;
 
@@ -194,16 +204,22 @@ app.post("/books", async (req: Request, res: Response) => {
 
 //     if (typeof name !== "string") {
 //       res.status(400);
-//       throw new Error("'titulo' deve ser string");
+//       throw new Error("'name' deve ser uma string");
 //     }
 
-//     const [authorDBExists]: TAuthor[] | undefined[] = await db("authors").where(
-//       {
-//         id,
-//       }
-//     );
+//     const authorsDataBase = new AuthorsDataBase();
 
-//     if (authorDBExists) {
+//     // const authors = await authorsDataBase.findAuthors(name);
+
+//     const authors = await authorsDataBase.findAuthorById(id);
+
+//     // const [authorDBExists]: TAuthor[] | undefined[] = await db("authors").where(
+//     //   {
+//     //     id,
+//     //   }
+//     // );
+
+//     if (authors) {
 //       res.status(400);
 //       throw new Error("'id' já existe");
 //     }
@@ -215,7 +231,7 @@ app.post("/books", async (req: Request, res: Response) => {
 //       name: newAuthor.getName(),
 //     };
 
-//     await db("authors").insert(newAuthorsDB);
+//     await authorsDataBase.createAuthors(newAuthorsDB);
 
 //     res.status(201).send(newAuthor);
 //   } catch (error) {
@@ -233,7 +249,8 @@ app.post("/books", async (req: Request, res: Response) => {
 //   }
 // });
 
-// app.put("/books/:id", async (req: Request, res: Response) => {
+app.put("/books/:id", booksController.editeBooks);
+//async (req: Request, res: Response) => {
 //   try {
 //     const id = req.params.id;
 
@@ -263,9 +280,12 @@ app.post("/books", async (req: Request, res: Response) => {
 //         }
 //       }
 //     }
-//     const [bookDB]: TBooks[] | undefined[] = await db("books").where({
-//       id,
-//     });
+//     // const [bookDB]: TBooks[] | undefined[] = await db("books").where({
+//     //   id,
+//     // });
+//     const booksDataBase = new BooksDataBase();
+
+//     const bookDB = await booksDataBase.findeBooksById(id);
 
 //     if (!bookDB) {
 //       res.status(404);
@@ -287,7 +307,8 @@ app.post("/books", async (req: Request, res: Response) => {
 //       author_book: updateBook.getAuthor_book(),
 //     };
 
-//     await db("books").update(updateBookDB).where({ id });
+//     // await db("books").update(updateBookDB).where({ id });
+//     await booksDataBase.editeBooks(id, updateBookDB);
 
 //     res.status(200).send("Atualização realizada com sucesso");
 //   } catch (error) {
@@ -305,7 +326,8 @@ app.post("/books", async (req: Request, res: Response) => {
 //   }
 // });
 
-// app.put("/authors/:id", async (req: Request, res: Response) => {
+app.put("/authors/:id", authorsController.editeAuthor);
+//async (req: Request, res: Response) => {
 //   try {
 //     const id = req.params.id;
 //     const newName = req.body.name as string | undefined;
@@ -321,16 +343,19 @@ app.post("/books", async (req: Request, res: Response) => {
 //       }
 //     }
 
-//     const [authorDB]: TAuthor[] | undefined[] = await db("authors").where({
-//       id,
-//     });
+//     // const [authorDB]: TAuthor[] | undefined[] = await db("authors").where({
+//     //   id,
+//     // });
 
-//     if (!authorDB) {
+//     const authorsDataBase = new AuthorsDataBase();
+//     const authors = await authorsDataBase.findAuthorById(id);
+
+//     if (!authors) {
 //       res.status(404);
 //       throw new Error("'id' não encontrado");
 //     }
 
-//     const name2 = newName || authorDB.name;
+//     const name2 = newName || authors.name;
 
 //     const updateAuthor = new Authors(id, name2);
 
@@ -339,7 +364,8 @@ app.post("/books", async (req: Request, res: Response) => {
 //       name: updateAuthor.getName(),
 //     };
 
-//     await db("authors").update(updateAuthorDB).where({ id });
+//     // await db("authors").update(updateAuthorDB).where({ id });
+//     await authorsDataBase.editeAuthors(id, updateAuthorDB);
 
 //     res.status(200).send("Atualização realizada com sucesso");
 //   } catch (error) {
@@ -357,14 +383,18 @@ app.post("/books", async (req: Request, res: Response) => {
 //   }
 // });
 
-// app.delete("/books/:id", async (req: Request, res: Response) => {
+app.delete("/books/:id", booksController.deleteBooks);
+// async (req: Request, res: Response) => {
 //   try {
 //     const id = req.params.id;
 
-//     const [result]: TBooks[] = await db("books").where({ id });
+//     // const [result]: TBooks[] = await db("books").where({ id });
+//     const booksDataBase = new BooksDataBase();
+//     const result = await booksDataBase.findeBooksById(id);
 
 //     if (result) {
-//       await db("books").del().where({ id });
+//       // await db("books").del().where({ id });
+//       await booksDataBase.deleteBooks(id);
 //     } else {
 //       res.status(404);
 //       throw new Error("Video por ID não encontrada. Verifique o ID");
@@ -383,14 +413,18 @@ app.post("/books", async (req: Request, res: Response) => {
 //   }
 // });
 
-// app.delete("/authors/:id", async (req: Request, res: Response) => {
+app.delete("/authors/:id", authorsController.deleteAuthor);
+//async (req: Request, res: Response) => {
 //   try {
 //     const id = req.params.id;
+//     const authorsDataBase = new AuthorsDataBase();
 
-//     const [result]: TBooks[] = await db("authors").where({ id });
+//     // const [result]: TBooks[] = await db("authors").where({ id });
+//     const result = await authorsDataBase.findAuthorById(id);
 
 //     if (result) {
-//       await db("authors").del().where({ id });
+//       // await db("authors").del().where({ id });
+//       await authorsDataBase.deleteAuthors(id);
 //     } else {
 //       res.status(404);
 //       throw new Error("Video por ID não encontrada. Verifique o ID");
