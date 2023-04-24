@@ -5,30 +5,45 @@ export class AuthorsDataBase extends BaseDatabase {
   public static TABLE_AUTHORS = "authors";
 
   public async findAuthors(q: string | undefined): Promise<TAuthor[]> {
-    let books;
+    let authors;
     if (q) {
       const result: TAuthor[] = await BaseDatabase.connection(
         AuthorsDataBase.TABLE_AUTHORS
-      ).where("id", "LIKE", `%${q}%`);
-      books = result;
+      ).where("name", "LIKE", `%${q}%`);
+      authors = result;
     } else {
       const result: TAuthor[] = await BaseDatabase.connection(
         AuthorsDataBase.TABLE_AUTHORS
       );
-      books = result;
+      authors = result;
     }
-    return books;
+    return authors;
   }
-  public async findeAuthorsById(id: string): Promise<TAuthor | undefined> {
-    const [bookDBExists]: TAuthor[] | undefined[] =
+  public async findAuthorById(
+    id: string | undefined
+  ): Promise<TAuthor | undefined> {
+    const [authorDBExists]: TAuthor[] | undefined[] =
       await BaseDatabase.connection(AuthorsDataBase.TABLE_AUTHORS).where({
         id,
       });
     return authorDBExists;
   }
-  public async insertBook(newAuthorsDB: TAuthor) {
+  public async createAuthors(newAuthorsDB: TAuthor): Promise<void> {
     await BaseDatabase.connection(AuthorsDataBase.TABLE_AUTHORS).insert(
       newAuthorsDB
     );
+  }
+  public async editeAuthors(
+    id: string,
+    updateAuthorDB: TAuthor
+  ): Promise<void> {
+    await BaseDatabase.connection(AuthorsDataBase.TABLE_AUTHORS)
+      .update(updateAuthorDB)
+      .where({ id });
+  }
+  public async deleteAuthors(id: string): Promise<void> {
+    await BaseDatabase.connection(AuthorsDataBase.TABLE_AUTHORS)
+      .del()
+      .where({ id });
   }
 }

@@ -1,9 +1,7 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
-import { BaseDatabase } from "./database/BaseDatabase";
 import { TVideos } from "./types";
 // import { Videos } from "../models/Videos";
-import { time } from "console";
 import { VideosDatabase } from "./database/VideoDatabase";
 import { Videos } from "./models/Videos";
 

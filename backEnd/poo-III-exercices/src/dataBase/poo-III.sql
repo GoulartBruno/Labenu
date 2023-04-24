@@ -7,7 +7,7 @@ CREATE TABLE books(
     pages INTEGER,
     created_at TEXT DEFAULT (DATETIME()) NOT NULL,
     author_book TEXT NOT NULL,
-    FOREIGN KEY (author_book) REFERENCES author(id)
+    FOREIGN KEY (author_book) REFERENCES authors(id)
 );
 
 INSERT INTO books (id, titulo, pages, author_book )
@@ -36,3 +36,5 @@ SELECT * FROM authors;
 
 DROP Table books;
 DROP Table authors;
+
+DROP TABLE IF EXISTS author

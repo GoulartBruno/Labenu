@@ -19,7 +19,9 @@ export class BooksDataBase extends BaseDatabase {
     }
     return books;
   }
-  public async findeBooksById(id: string): Promise<TBooks | undefined> {
+  public async findeBooksById(
+    id: string | undefined
+  ): Promise<TBooks | undefined> {
     const [bookDBExists]: TBooks[] | undefined[] =
       await BaseDatabase.connection(BooksDataBase.TABLE_BOOKS).where({
         id,
@@ -28,5 +30,16 @@ export class BooksDataBase extends BaseDatabase {
   }
   public async insertBook(newBooksDB: TBooks) {
     await BaseDatabase.connection(BooksDataBase.TABLE_BOOKS).insert(newBooksDB);
+  }
+
+  public async editeBooks(id: string, updateBookDB: TBooks): Promise<void> {
+    await BaseDatabase.connection(BooksDataBase.TABLE_BOOKS)
+      .update(updateBookDB)
+      .where({ id });
+  }
+  public async deleteBooks(id: string): Promise<void> {
+    await BaseDatabase.connection(BooksDataBase.TABLE_BOOKS)
+      .del()
+      .where({ id });
   }
 }
