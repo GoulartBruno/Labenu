@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+      "target": "ES6",
+      "module": "commonjs",   
+      "sourceMap": true,       
+      "outDir": "./build",      
+      "rootDir": "./src",       
+      "removeComments": true,   
+      "noImplicitAny": true,      
+      "esModuleInterop": true,
+//    "noEmitOnError": true, temos que desabilitar essa opção caso esteja ativada
+      "strict": true
+  },
+  "exclude": ["./tests/*"] // faz o TS ignorar a pasta tests (pq é o Jest que cuida dela)
+}
